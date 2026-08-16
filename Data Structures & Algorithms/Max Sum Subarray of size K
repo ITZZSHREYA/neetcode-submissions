@@ -1,0 +1,61 @@
+class Solution {
+    public int maxSubarraySum(int[] arr, int k)
+    {
+        int sum=0,low=0,high=k-1;
+        int n=arr.length;
+        int res=0;
+        for(int i=0;i<k;i++)
+        {
+            sum+=arr[i];
+        }
+        res=sum;
+        while(high<n-1)
+        {
+            
+            
+            if(high==n)
+            {
+                break;
+            }
+            low++;
+            high++;
+            
+            sum=sum-arr[low-1];
+            sum=sum+arr[high];
+            res = Math.max(res, sum);
+            
+            
+        }
+        return res;
+        
+        // Code here
+        
+    }
+    
+}
+/*
+class Solution {
+    public int maxSubarraySum(int[] arr, int k) {
+        int sum = 0, low = 0, high = k - 1;
+        int n = arr.length;
+
+        // 1. Calculate sum of first window
+        for (int i = 0; i < k; i++) {
+            sum += arr[i];
+        }
+
+        int res = sum; // Initialize res with the first window's sum
+
+        // 2. Slide window across the rest of the array
+        while (high < n - 1) {
+            sum = sum - arr[low] + arr[high + 1]; // Remove outgoing element, add incoming element
+            low++;
+            high++;
+            res = Math.max(res, sum); // Update res AFTER sum recalculation
+        }
+
+        return res;
+    }
+}
+*/
+https://www.geeksforgeeks.org/problems/max-sum-subarray
