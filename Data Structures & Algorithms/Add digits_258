@@ -1,0 +1,28 @@
+class Solution {
+    public int addDigits(int num) 
+    {
+        
+        if(num<=9)
+        {
+            return num;
+        }
+        while (num>=9) {
+            int n1 = num / 10;
+
+            int n2 = num % 10;
+            
+
+            num = n1 + n2;
+            
+            
+            if (num <= 9) {
+                return num;
+
+            }
+
+        }
+
+        return 0;
+
+    }
+}
